@@ -562,7 +562,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
 
 	private boolean isInWater() {
-    AxisAlignedBB bb = this.getEntityBoundingBox().expand(0.0D, -0.4D, 0.0D);
+    AxisAlignedBB bb = this.getEntityBoundingBox();
 
     int minX = MathHelper.floor(bb.minX);
     int maxX = MathHelper.floor(bb.maxX);
@@ -574,14 +574,23 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     for (int x = minX; x <= maxX; x++) {
         for (int y = minY; y <= maxY; y++) {
             for (int z = minZ; z <= maxZ; z++) {
+
                 IBlockState state = this.world.getBlockState(new BlockPos(x, y, z));
+
                 if (state.getBlock() == net.minecraft.init.Blocks.WATER ||
                     state.getBlock() == net.minecraft.init.Blocks.FLOWING_WATER) {
-                    return true;
+
+                    // 1.13-style requirement: actually inside fluid volume, not just touching edge
+                    double fluidTop = (double)(y + 1);
+
+                    if (bb.maxY > y && bb.minY < fluidTop) {
+                        return true;
+                    }
                 }
             }
         }
     }
+
     return false;
 }
 
@@ -870,12 +879,18 @@ if (this.isInWater()) {
     this.motionX *= 1.08D;
     this.motionZ *= 1.08D;
 
+    this.motionX *= 0.98D;
+    this.motionZ *= 0.98D;
+
     this.setSprinting(false);
+
+    this.fallDistance = 0.0F;
 
     if (this.movementInput.jump) {
         this.motionY += 0.08D;
     } else {
         this.motionY *= 0.85D;
+        this.motionY += 0.02D;
     }
 }
 
