@@ -1,4 +1,4 @@
-# Eaglercraft 1.12
+# Eaglercraft 1.13.2
 (README ripped from 1.8)
 
 ### Java 17 is recommended for compiling to TeaVM
