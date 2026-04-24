@@ -601,7 +601,7 @@ public class Minecraft implements IThreadListener {
 
 	private void createDisplay() {
 		Display.create();
-		Display.setTitle("Eaglercraft 1.12.2");
+		Display.setTitle("Eaglercraft 1.13.2");
 	}
 
 	public String getVersion() {
@@ -2033,7 +2033,7 @@ public class Minecraft implements IThreadListener {
 		});
 		theCrash.getCategory().setDetail("Is Modded", new ICrashReportDetail<String>() {
 			public String call() throws Exception {
-				return "Yes, Eaglercraft 1.12.2";
+				return "Yes, Eaglercraft 1.13.2";
 			}
 		});
 		theCrash.getCategory().setDetail("Type", new ICrashReportDetail<String>() {
