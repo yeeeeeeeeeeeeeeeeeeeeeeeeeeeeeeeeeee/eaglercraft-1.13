@@ -486,14 +486,14 @@ public class GuiMainMenu extends GuiScreen {
 		GlStateManager.scale(f, f, f);
 		this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
 		GlStateManager.popMatrix();
-		String s = "Minecraft 1.12.2";
+		String s = "Minecraft 1.13.2";
 
 		if (this.mc.isDemo()) {
 			s = s + " Demo";
 		}
 
 		this.drawString(this.fontRendererObj, s, 2, this.height - 20, -1);
-		this.drawString(this.fontRendererObj, "Eaglercraft 1.12.2 (" + EaglercraftVersion.projectOriginVersion + ")", 2,
+		this.drawString(this.fontRendererObj, "Eaglercraft 1.13.2 (" + EaglercraftVersion.projectOriginVersion + ")", 2,
 				this.height - 10, -1);
 		this.drawString(this.fontRendererObj, "Resources copyright Mojang AB", this.field_193979_N, this.height - 10,
 				-1);
