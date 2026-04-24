@@ -560,6 +560,32 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 		this.sprintingTicksLeft = 0;
 	}
 
+
+	private boolean isInWater() {
+    AxisAlignedBB bb = this.getEntityBoundingBox().expand(0.0D, -0.4D, 0.0D);
+
+    int minX = MathHelper.floor(bb.minX);
+    int maxX = MathHelper.floor(bb.maxX);
+    int minY = MathHelper.floor(bb.minY);
+    int maxY = MathHelper.floor(bb.maxY);
+    int minZ = MathHelper.floor(bb.minZ);
+    int maxZ = MathHelper.floor(bb.maxZ);
+
+    for (int x = minX; x <= maxX; x++) {
+        for (int y = minY; y <= maxY; y++) {
+            for (int z = minZ; z <= maxZ; z++) {
+                IBlockState state = this.world.getBlockState(new BlockPos(x, y, z));
+                if (state.getBlock() == net.minecraft.init.Blocks.WATER ||
+                    state.getBlock() == net.minecraft.init.Blocks.FLOWING_WATER) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+	
 	/**
 	 * Sets the current XP, total XP, and level number.
 	 */
@@ -837,7 +863,24 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 		float f = 0.8F;
 		boolean flag2 = this.movementInput.field_192832_b >= 0.8F;
 		this.movementInput.updatePlayerMoveState();
-		this.mc.func_193032_ao().func_193293_a(this.movementInput);
+
+/* ✅ SWIMMING LOGIC HERE */
+if (this.isInWater()) {
+
+    this.motionX *= 1.08D;
+    this.motionZ *= 1.08D;
+
+    this.setSprinting(false);
+
+    if (this.movementInput.jump) {
+        this.motionY += 0.08D;
+    } else {
+        this.motionY *= 0.85D;
+    }
+}
+
+/* AFTER THIS POINT: vanilla logic continues */
+this.mc.func_193032_ao().func_193293_a(this.movementInput);
 
 		if (this.isHandActive() && !this.isRiding()) {
 			this.movementInput.moveStrafe *= 0.2F;
