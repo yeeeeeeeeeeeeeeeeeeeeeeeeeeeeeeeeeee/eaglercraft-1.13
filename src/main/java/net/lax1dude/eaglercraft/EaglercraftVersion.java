@@ -6,19 +6,19 @@ public class EaglercraftVersion {
 
 	/// Customize these to fit your fork:
 
-	public static final String projectForkName = "Eaglercraft 1.12";
-	public static final String projectForkVersion = "u2";
-	public static final String projectForkVendor = "PeytonPlayz585";
+	public static final String projectForkName = "Eaglercraft 1.13.2";
+	public static final String projectForkVersion = "u1";
+	public static final String projectForkVendor = "threefold";
 
-	public static final String projectForkURL = "https://github.com/Eaglercraft-1-12/1.12";
+	public static final String projectForkURL = "https://github.com/yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eaglercraft-1.13/";
 
 	//////////////////////////////////////////////////////////////////////
 
-	public static final String projectOriginName = "Eaglercraft 1.12";
-	public static final String projectOriginAuthor = "PeytonPlayz585";
-	public static final String projectOriginVersion = "u2";
+	public static final String projectOriginName = "Eaglercraft 1.13.2";
+	public static final String projectOriginAuthor = "threefold";
+	public static final String projectOriginVersion = "u1";
 
-	public static final String projectOriginURL = "https://github.com/Eaglercraft-1-12/1.12";
+	public static final String projectOriginURL = "https://github.com/yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eaglercraft-1.13/";
 
 	// EPK Version Identifier
 
